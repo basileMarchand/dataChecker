@@ -1,7 +1,6 @@
 cmake_minimum_required (VERSION 3.15.0)
 project (dataChecker)
 
-
 ##############################
 # Setting build options
 ##############################
@@ -11,6 +10,8 @@ if (NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE "Release")
 endif ()
 
+include(${PROJECT_SOURCE_DIR}/cmake/setup_compiler.cmake)
+message(STATUS "CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
 # SUPER BUILD OPTION 
 option(USE_SUPERBUILD "Whether or not a superbuild should be invoked" ON)
 set( THIRD_PARTY_BUILD_DIR "${PROJECT_SOURCE_DIR}/third_party_build" CACHE PATH "Superbuild build dir")
@@ -19,9 +20,9 @@ set( THIRD_PARTY_INSTALL_DIR "${PROJECT_SOURCE_DIR}/third_party" CACHE PATH "Sup
 # YAAP 
 set(YAAP_INCLUDE_DIR "" CACHE PATH "Yaap include directory")
 
-##############################
+#################################
 # Set additional compiler option
-##############################
+#################################
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -44,3 +45,4 @@ add_executable(${PROJECT_NAME} src/main.cpp)
 if( USE_SUPERBUILD )
     add_dependencies(${PROJECT_NAME} yaap_ep)
 endif( USE_SUPERBUILD )
+
