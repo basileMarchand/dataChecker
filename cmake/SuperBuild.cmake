@@ -8,7 +8,7 @@ ExternalProject_Add ( yaap_ep
     PREFIX "${YAAP_BUILD_PATH}"
     GIT_REPOSITORY "https://github.com/basileMarchand/yaap"
     INSTALL_DIR ${YAAP_INSTALL_PATH}
-    CMAKE_ARGS ${thirdparties_forward_options} -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
+    CMAKE_ARGS ${thirdparties_forward_options} -DCMAKE_INSTALL_PREFIX=${YAAP_INSTALL_PATH}
     LOG_DOWNLOAD  ON
     LOG_UPDATE    ON
     LOG_CONFIGURE ON
